@@ -18,7 +18,7 @@ public class HomeController {
 	@Autowired
 	private ScholarshipService scholarshipService;
 
-	@GetMapping("home")
+	@GetMapping
 	public String displayHome(Model model) {
 		List<Scholarship> scholarshipList = this.scholarshipService.getAllScholarships();
 		if(scholarshipList.get(0).getEligibility() == null) {
