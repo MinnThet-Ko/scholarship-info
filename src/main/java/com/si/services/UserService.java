@@ -5,6 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.si.models.User;
@@ -17,7 +18,8 @@ public class UserService implements UserDetailsService{
 	private UserRepository userRepository;
 	
 	public void saveUser(User user) {
-		this.userRepository.save(user.toUser(new BCryptPasswordEncoder()));
+		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+		this.userRepository.save(user);
 	}
 
 	@Override

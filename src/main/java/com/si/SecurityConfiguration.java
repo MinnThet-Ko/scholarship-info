@@ -22,8 +22,8 @@ public class SecurityConfiguration {
     //Create security filter chain
     @Bean
     SecurityFilterChain createSecurityFilterChain(HttpSecurity http) throws Exception {
-		http.authorizeHttpRequests((auth) -> auth.requestMatchers("/user/registration").permitAll().anyRequest())
-		//.authorizeHttpRequests((auth) -> auth.requestMatchers("/user/registration").permitAll().anyRequest().authenticated())
+		http.authorizeHttpRequests((auth) -> 
+		auth.requestMatchers("/","/user/registration").permitAll().anyRequest().authenticated())
 		.formLogin((form) -> form.loginPage("/user/login").permitAll());
 		return http.build();
 	}

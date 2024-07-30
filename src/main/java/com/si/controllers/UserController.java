@@ -31,6 +31,7 @@ public class UserController {
 	
 	@GetMapping("/registration")
 	public String displayRegistrationPage(Model model) {
+		System.out.println("In displayRegistrationPage");
 		model.addAttribute("user", new User());
 		return "registration";
 	}
